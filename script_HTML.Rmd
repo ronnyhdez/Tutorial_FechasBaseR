@@ -72,7 +72,7 @@ class(fecha_hora) # Clase del objeto
 Al momento de utilizar la función`Sys.time() `, nos devuelve una respuesta que a primera instancia nos parecería un objeto de tipo _character_ por sus comillas alrededor de esto, sin embargo, al revisar podemos notar que es un objeto de tipo _double_ y su clase es _ "POSIXct" "POSIXt" _ (tiene dos clases)
 
 
-## ¿Qué signifan esas dos clases?
+### ¿Qué signifan esas dos clases?
 
 Como mencionamos anteriormente, por convención en R se utiliza una representación numérica, basada en segundos. Esto quiere decir que cada fecha se representa por el número de segundos que han transcurrido desde las __12:00 A.M. del 1 Enero de 1970. __ (UTC: Coordinated Universal Time )
 
@@ -101,7 +101,6 @@ unlist(fecha_hora) # Sacamos de la lista los objetos almacenados
 ```
 
 ¿Qué es lo que tenemos? Se nos muestran los componentes de la lista, que está representada por el número de segundos, minutos, hora (en formato de 24 horas). Luego viene **mday** que es el día del mes (inicia en 1), **mon** es el mes del año (comienza en enero = 0), **year** que representa el año (inicia en 0 = 1900),**wday** el día de la semana (inicia domingo = 0), **yday** es el número de día del año (1 de enero = 0). Por último la variable **isdst** lo que hace es indicarnos si un horario de verano está siendo considerado (0 = FALSE, como en este caso)
-
 
 # Leer fechas desde archivos
 
@@ -170,6 +169,22 @@ Estas son abreviaciones que dan a entender diferentes formas de leer el dato en 
 |   %y  | Año sin centenario|
 |   %Z  | Zona horaria como un vector de tipo caracter|
 
+# Análisis estadísticos con datos de fechas. 
+
+Una de las posibles tareas que tengamos, es hacer un análisis estadístico. Digamos que podríamos hacer una regresión o un ANOVA. De acuerdo a la prueba necesitamos datos continuos (regresión) o datos categóricos (ANOVA)
+
+Nosotros podemos ver datos de meses como continuos o como categóricos, pero a R se lo tenemos que hacer explícito y es aquí donde hacemos uso de las clases que vimos anteriormente.
+
+## Fecha continua para regresión
+
+Vamos a hacer una regresión (a modo de ejemplo y no nos vamos a interesar por los supuestos). Vamos a explorar la relación entre la fecha y los retrasos que sufren los vuelos
+
+```{r}
+data$Rdate <- as.POSIXct(data$Rdate)
+
+
+
+```
 
 ### Nombre completo del día:
 Ahora bien, hay ocasiones en que por ejemplo, tenemos el día como un número, pero nos serviría más tener el nombre del día. Para esto existe la función `weekdays()`
