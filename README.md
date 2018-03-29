@@ -7,7 +7,7 @@ Para seguir este tutorial, se necesita tener una versión de R actualizada. Para
 
 Deberíamos de poder ver una versión igual o mayor a la 3.4.3
 
-En caso de necesitar actualizar la versión de R, lo puede descargar desde [aquí] (https://cloud.r-project.org/)
+En caso de necesitar actualizar la versión de R, lo puede descargar desde [aquí](https://cloud.r-project.org/)
 
 Así mismo se usan varios paquetes dentro del tutorial, que si necesita instalar lo puede hacer con el siguiente comando:
 
