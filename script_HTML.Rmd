@@ -179,16 +179,40 @@ Nosotros podemos ver datos de meses como continuos o como categóricos, pero a R
 
 Vamos a hacer una regresión (a modo de ejemplo y no nos vamos a interesar por los supuestos). Vamos a explorar la relación entre la fecha y los retrasos que sufren los vuelos
 
+```{r, error = TRUE}
+data$Rdate <- as.POSIXlt(data$Rdate)
+modelo <- lm(arr_delay ~ Rdate, data = data)
+```
+
+> ¿Qué pasó?
+
+Si la fecha no está como un continuo, es decir con clase **POSIXct** el modelo no se podrá hacer, puesto que para una regresión necesitamos datos continuos.
+
+Si nos encontramos con esto simplemente podemos hacer una coerción de la siguiente manera:
+
+```{r}
+data$Rdate <- as.POSIXct(data$Rdate)
+```
+
+Y volvemos a repetir el modelo:
+
 ```{r}
 modelo <- lm(arr_delay ~ Rdate, data = data)
 summary(modelo)
+```
 
+
+¿Y en el caso de una ANOVA?
+
+Pues para esto necesitamos datos categóricos y por ende es necesario que tenamos las categorías:
+```{r}
 anova <- aov(arr_delay ~ Rdate, data = data)
 summary(anova)
 ```
 
 
 ```{r}
+#convertir a continuo
 data$Rdate <- as.POSIXct(data$Rdate) 
 ```
 
